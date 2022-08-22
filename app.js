@@ -1,5 +1,6 @@
 const express = require('express')
- const user=require('./routes/user')
+const user=require('./routes/user')
+const posts=require('./routes/post')
 
 const app = express()
 const port = 5000
@@ -14,8 +15,8 @@ const port = 5000
 // })
 
 app.use(express.json())
-
 app.use('/user', user)
+app.use('/post',posts)
 
 
 app.get('/', (req, res) => {
