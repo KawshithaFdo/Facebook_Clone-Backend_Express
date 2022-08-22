@@ -27,5 +27,10 @@ router.get('/:id',(req,res) => {
     res.send("Get User by ID : "+req.params.id)
 })
 
+//Login
+router.post('/:username/:passwords',(req,res) => {
+    res.send("User Login");
+})
+
 
 module.exports=router
