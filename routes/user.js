@@ -76,16 +76,18 @@ router.get('/:id',async (req,res) => {
 })
 
 //Login
-router.post('/:email/:passwords',async (req,res) => {
+router.post('/:email/:password',async (req,res) => {
     try {
-         mail=req.params.email
-        const user=await User.find({email:mail})
-        res.json(user)
+        const user=await User.find({email:req.params.email})
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].password==req.params.password){
+                res.send("Email and Password Matched")
+            }
+        }
+
     }catch (err) {
         res.send('Err: ' + err)
     }
-
 })
-
 
 module.exports=router
