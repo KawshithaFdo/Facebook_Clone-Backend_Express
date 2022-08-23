@@ -60,20 +60,11 @@ router.delete('/:id',async (req,res) => {
     }
 })
 
-//Get by Id
-/*router.get('/:id',async (req,res) => {
-    try {
-        const post = await Post.findById(req.params.id)
-        res.json(post)
-    } catch (err) {
-        res.send('Err: ' + err)
-    }
-})*/
-
 //Get by User Id
 router.get('/:id',async (req,res) => {
     try {
-        const post=await Post.find({user_id:1})
+        const post=[await Post.find({user_id:req.params.id})]
+        //This may return an array
         res.json(post)
     }catch (err) {
         res.send('Err: ' + err)
